@@ -1,0 +1,195 @@
+ 											M Shanmugavel
+
+1)Mathematical expression valid or not
+
+package JanAssignments;
+import java.util.*;
+public class ExpValOrNot {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String exp=sc.next();
+		boolean flag=true;
+		int c=0;
+		for(int i=0;i<exp.length();i++) {
+			if(exp.charAt(i)=='(') {
+				c++;
+			}
+			else if(exp.charAt(i)==')') {
+				c--;
+			}
+			else if(97<=(int)exp.charAt(i)&&(int)exp.charAt(i)<=122) {
+				if(97<=(int)exp.charAt(i+1)&&(int)exp.charAt(i+1)<=122) {
+					flag=false;
+				}
+			}
+			else
+				continue;
+	}
+		if(flag) {
+			if(c==0) {
+			System.out.println("valid");
+			}
+		}
+		else {
+			System.out.println("invalid");
+		}
+
+}
+}
+
+
+2)Split the array into equal sum
+
+package JanAssignments;
+import java.util.*;
+public class FindEqualSum {
+
+	public static void main(String[] args) {
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++) {
+		   arr[i]=sc.nextInt();
+		}
+		int[] a1=new int[arr.length];
+		int[] a2=new int[arr.length];
+		int l1=0,l2=0,j;
+		int sum1=0;
+		for(int i=0;i<arr.length-1;i++) {
+			sum1+=arr[i];
+			int sum2=0;
+			for(j=i+1;j<arr.length;j++) {
+				
+				sum2+=arr[j];
+			}
+			if(sum1==sum2) {
+				for(int k=0;k<=i;k++) {
+					a1[l1++]=arr[k];
+				}
+				for(int m=i+1;m<arr.length;m++) {
+					a2[l2++]=arr[m];
+				}
+				break;
+			}
+		}
+		System.out.println(Arrays.toString(a1));
+		System.out.println(Arrays.toString(a2));
+		sc.close();
+	}
+
+}
+
+3)Count the SubString
+
+package JanAssignments;
+public class StringFind {
+    public static void main(String[] args) {
+        
+        String[] x={"ceo","alco","caaeio","ceai"};
+        String[] y={"ec","oc","coe"};
+        System.out.println();
+        int n=x.length;
+        int m=y.length;
+        int total=0;
+        for(int i=0;i<n;i++) {
+            int count=0;
+            for (int j = 0; j < m; j++) {
+                if (found(x[i], y[j])) {
+                    count++;
+                }
+            }
+            if(count==m){
+                total++;
+            }
+        }
+        System.out.println(total);
+    }
+    private static boolean found(String a, String b) {
+        char[] se=a.toCharArray();
+        char[] sa=b.toCharArray();
+        sort(se);
+        sort(sa);
+        int c=0;
+        for(int i=0;i<se.length;i++){
+            for(int j=0;j<sa.length;j++){
+                if(se[i]==sa[j]){
+                    c++;
+                    se[j]=' ';
+                    break;
+                }
+            }
+        }
+        if(c==sa.length){
+            return true;
+        }
+        return false;
+    }
+
+    public static void sort(char[] x1) {
+        for(int i=0;i<x1.length;i++){
+            for(int j=0;j<x1.length-i-1;i++){
+                if(x1[j]>x1[j+1]){
+                    char temp=x1[j];
+                    x1[j]=x1[j+1];
+                    x1[j+1]=temp;
+                }
+            }
+        }
+    }
+}
+
+4)Find the minimum count of denominations
+
+package JanAssignments;
+import java.util.*;
+public class Denominations {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr= {100,50,10,5,2};
+		int result= findDenomination(arr ,n);
+		System.out.println(result);
+	}
+	public static int findDenomination(int[] a,int n) {
+		int count = 0;
+		if(n%2!=0 && n%5!=0) {
+			return -1;
+		}
+		for(int i=0;i<a.length;i++) {
+				while(n>a[i]) {
+					n=n-a[i];
+					count++;
+				}
+			}	
+		return count;
+	}
+
+}
+
+5)Find substring Characters count
+
+package JanAssignments;
+import java.util.*;
+class CountSubString {
+
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		String ip=sc.next();
+		String ref=sc.next();
+		int[] arr=new int[ref.length()];
+		String str= ip.toLowerCase();
+		String rs= ref.toLowerCase();
+		for(int i=0;i<str.length();i++) {
+			for(int j=0;j<rs.length();j++) {
+				if(str.charAt(i)==rs.charAt(j)) {
+					arr[j]++;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(arr));
+	}
+
+}
+
+
