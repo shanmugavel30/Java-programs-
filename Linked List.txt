@@ -1,0 +1,224 @@
+1)Singly Linked List
+
+package LinkedList;
+
+public class Slink {
+	public Node head;
+
+	class Node{
+		int data;
+		Node next;
+		Node(int data){
+			this.data=data;
+			next = null;
+		}
+		
+	}
+	Slink(){
+	  head=null;
+	}
+// Insert At begining	
+	public void insertAtBeg(int data) {
+		Node newNode = new Node(data);
+		
+		if(head==null) {
+			head = newNode;
+		}
+		else {
+			newNode.next = head;
+			head = newNode;
+		}
+	}
+	
+// Insert By position 
+	
+	public void insertAtPos(int pos, int data) {
+		Node newNode = new Node(data);
+		Node temp = head;
+		for(int i=1;i<pos;i++) {
+			temp=temp.next;
+			if(temp==null) {
+				System.out.println("invalid");
+				return;
+			}
+		}
+		newNode.next=temp.next;
+		temp.next=newNode;
+		
+	}
+	
+	
+//Delete by position
+	
+	public void DeleteAtPos(int pos) {
+		if(pos==0) {
+			head=head.next;
+		}
+		Node temp=head;
+		Node prev = null;
+		
+		for(int i=1;i<=pos;i++) {
+			prev=temp;
+			temp=temp.next;
+		}
+		prev.next=temp.next;
+	}
+	
+// Display the values
+	
+	public void display() {
+		Node temp = head;
+		if(temp!=null) {
+			System.out.println("Here, e can see the linked list values...");
+		while(temp!=null) {
+			System.out.println(temp.data);
+			temp = temp.next;
+		}
+		}
+	}
+		     
+	
+	
+	public static void main(String[] args) {
+		Slink obj = new Slink();
+		obj.insertAtBeg(99);
+		obj.insertAtBeg(100);
+		obj.insertAtPos(1, 98);
+		obj.insertAtPos(1, 97);
+		obj.insertAtPos(4, 90);
+		obj.DeleteAtPos(2);
+		
+		obj.display();
+		
+	}
+}
+
+2)Doubly Linked List
+
+package LinkedList;
+
+import LinkedList.Slink.Node;
+
+public class Dlink {
+	public Node head;
+	public Node tail;
+	class Node{
+		int data;  //Generic--T
+		Node next;
+		Node prev;
+		
+		Node(int data){
+			this.data=data;
+			next = null;
+			prev=null;
+		}
+		
+	}
+	Dlink(){
+	  head=null;
+	  tail=null;
+	}
+// Insert At begining	
+	public void insertAtBeg(int data) {
+		Node newNode = new Node(data);
+		newNode.next=head;
+		if(head==null) {
+			tail = newNode;
+		}
+		else {			
+			head.prev=newNode.next ;
+		}
+		head = newNode;
+	}
+	
+// Insert By position 
+	
+	public void insertAtPos(int pos, int data) {
+		Node newNode = new Node(data);
+		Node temp = head;
+		for(int i=1;i<pos;i++) {
+			temp=temp.next;
+			if(temp==null) {
+				System.out.println("invalid");
+				return;
+			}
+		}
+		newNode.next=temp.next;
+		newNode.prev=temp;
+		if(temp==tail) {
+			tail=newNode;
+		}
+		else {
+			temp.next.prev=newNode;
+		}
+		temp.next=newNode;
+		
+		
+	}
+	
+	
+//Delete by position
+	
+	public void DeleteAtPos(int pos) {
+		if(pos==0) {			
+			head=head.next;
+			if(head==null){
+				tail=null;
+			}
+			else
+			   head.prev=null;
+			return;
+		}
+		Node temp=head;
+		Node previ = null;
+		
+		for(int i=1;i<=pos;i++) {
+			previ=temp;
+			temp=temp.next;
+		}
+		previ.next=temp.next;
+		temp.next.prev=previ;
+	}
+	
+// Display the values
+	
+	public void display() {
+		Node temp = head;
+		if(temp!=null) {
+			System.out.println("Here, e can see the linked list values...");
+		while(temp!=null) {
+			System.out.println(temp.data);
+			temp = temp.next;
+		}
+		}
+	}
+	
+// Display in reverse
+	
+	public void displayRev() {
+		Node temp = tail;
+		if(temp!=null) {
+			System.out.println("Here, e can see the linked list values...");
+		while(temp!=null) {
+			System.out.println(temp.data);
+			temp = temp.prev;
+		}
+		}
+	}	
+	public static void main(String[] args) {
+		Dlink obj = new Dlink();
+		
+		obj.insertAtBeg(99);
+		obj.insertAtBeg(100);
+		obj.insertAtPos(1, 98);
+		obj.insertAtPos(1, 97);
+		obj.insertAtPos(4, 90);
+		obj.DeleteAtPos(2);
+		
+		obj.display();
+		obj.displayRev();
+		
+	}
+
+}
+
