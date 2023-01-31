@@ -1,0 +1,463 @@
+package StackQueue;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+public class IPLteams {
+	static HashMap<Integer,String> SaveMethods =new HashMap<Integer, String>();
+	public void getMainMenu()
+	{
+		System.out.println("Enter the choice");
+		//Menus =new Menus();
+		SaveMethods.put(1, "RCB");
+		SaveMethods.put(2, "CSK");
+		SaveMethods.put(3, "MI");
+		SaveMethods.put(4, "Exit");
+		getMenus(1, 4);
+	}
+	public void getRCBplayers()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(11, "V-Kohli==King");
+		SaveMethods.put(12, "ABD");
+		SaveMethods.put(13, "Siraj");
+		SaveMethods.put(14, "Back");
+		getMenus(11, 14);
+	}
+	public void getCSKplayers()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(21, "Dhoni");
+		SaveMethods.put(22, "Jaddu");
+		SaveMethods.put(23, "Chahar");
+		SaveMethods.put(24, "Back");
+		getMenus(21, 24);
+	}
+	public void getMIplayers()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(31, "Hitman");
+		SaveMethods.put(32, "SKY");
+		SaveMethods.put(33, "Bumbrah");
+		SaveMethods.put(34, "Back");
+		getMenus(31, 34);
+	}
+	public void getRolesVK()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(111, "Batsman");
+		SaveMethods.put(112, "Back");
+		SaveMethods.put(113, "MainMenu");
+		getMenus(111, 113);
+	}
+	public void getRolesABD()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(121, "W-K");
+		SaveMethods.put(122, "Back");
+		SaveMethods.put(123, "MainMenu");
+		getMenus(121, 123);
+	}
+	public void getRolesSiraj()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(131, "Bowler");
+		SaveMethods.put(132, "Back");
+		SaveMethods.put(133, "MainMenu");
+		getMenus(131, 133);
+	}
+	public void getRolesDhoni()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(211, "Batsman");
+		SaveMethods.put(212, "Back");
+		SaveMethods.put(213, "MainMenu");
+		getMenus(211, 213);
+	}
+	public void getRolesJaddu()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(221, "Allrounder");
+		SaveMethods.put(222, "Back");
+		SaveMethods.put(223, "MainMenu");
+		getMenus(221, 223);
+	}
+	public void getRolesChahar()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(231, "Batsman");
+		SaveMethods.put(232, "Back");
+		SaveMethods.put(233, "MainMenu");
+		getMenus(231, 233);
+	}
+	public void getRolesHit()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(311, "Captain");
+		SaveMethods.put(312, "Back");
+		SaveMethods.put(313, "MainMenu");
+		getMenus(311, 313);
+	}
+	public void getRolesSky()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(321, "Batsman");
+		SaveMethods.put(322, "Back");
+		SaveMethods.put(323, "MainMenu");
+		getMenus(321, 323);
+	}
+	public void getRolesBumbh()
+	{
+		System.out.println("Enter the choice");
+		//Menus menu=new Menus();
+		SaveMethods.put(331, "Bowler");
+		SaveMethods.put(332, "Back");
+		SaveMethods.put(333, "MainMenu");
+		getMenus(331, 333);
+	}
+	public void goBackToMainMenu(Stack<Integer> SmallStack)
+	{
+		//Menus menu =new Menus();
+		
+		while(SmallStack.size()!=0)
+		{
+			SmallStack.pop();
+		}
+		
+	}
+	
+	public int goBack(int choice,Stack<Integer> SmallStack)
+	{
+		//Menus menu =new Menus();
+		int popval=choice/10;
+		while(SmallStack.peek()!=popval)
+		{
+			SmallStack.pop();
+		}
+		SmallStack.pop();
+		choice=getStartIndex(popval)/10;
+		return choice;
+		//getMenus(start,start+8);
+		
+	}
+	public int getStartIndex(int popval)
+	{
+		int length = (int) (Math.log10(popval) + 1);
+		int start=1;
+		while((length-1)!=0)
+		{
+			start=start*10+1;
+			length--;
+		}
+
+		
+		return start;
+	}
+	
+	public void getMenus(int start,int end)
+	{
+		//Menus menu =new Menus();
+		int index=1;
+		while(start<=end)
+		{
+			for(Map.Entry<Integer, String> entry:SaveMethods.entrySet())
+			{
+				
+					if(entry.getKey()==start)
+					{
+						System.out.println(index+". "+entry.getValue());
+						index++;
+						
+					}
+			}
+			start++;
+		} 
+		
+	} 
+
+}
+
+//Main class
+
+
+package StackQueue;
+import java.util.Scanner;
+import java.util.Stack;
+public class MyStack {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		IPLteams obj=new IPLteams();
+		Scanner sc =new Scanner(System.in);
+		Stack<Integer> SmallStack=new Stack<Integer>();
+		int choice,cchoice;
+		System.out.println("....Welcome to My Website for Visit IPL teams....");
+		while(true) {
+			obj.getMainMenu();
+			choice=sc.nextInt();
+			SmallStack.push(choice);
+			switch (choice) {
+			case 1:
+				obj.getRCBplayers();
+				cchoice=sc.nextInt();
+				choice=choice*10+cchoice;
+				SmallStack.push(choice);
+				while(choice>=11&&choice<=13)
+				{
+				switch(choice)
+				{
+				case 11:
+					obj.getRolesVK();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==112)
+					{
+						choice=obj.goBack(choice, SmallStack);					
+					}
+					else if(choice==113) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 12:
+					
+					obj.getRolesABD();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==122)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==123) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 13:
+					
+					obj.getRolesSiraj();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==112)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==113) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+		   }
+	   }
+				break;
+			case 2:
+				obj.getCSKplayers();
+				cchoice=sc.nextInt();
+				choice=choice*10+cchoice;
+				SmallStack.push(choice);
+				while(choice>=21 && choice<=23)
+				{
+				switch(choice)
+				{
+				case 21:
+					
+					obj.getRolesDhoni();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==212)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==213) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 22:
+					
+					obj.getRolesJaddu();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==222)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==223) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 23:
+					
+					obj.getRolesChahar();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==232)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==233) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+		   }
+	   }
+				break;
+			case 3:
+				obj.getMIplayers();
+				cchoice=sc.nextInt();
+				choice=choice*10+cchoice;
+				SmallStack.push(choice);
+				while(choice>=31&&choice<=33)
+				{
+				switch(choice)
+				{
+				case 31:
+					
+					obj.getRolesHit();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==312)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==313) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 32:
+					
+					obj.getRolesSky();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==322)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==323) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+					
+				case 33:
+					
+					obj.getRolesBumbh();
+					cchoice=sc.nextInt();
+					choice=choice*10+cchoice;
+					SmallStack.push(choice);
+					if(choice==332)
+					{
+						choice=obj.goBack(choice, SmallStack);
+					}
+					else if(choice==333) {
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+					}
+					else
+					{						
+						System.out.println("Thank you  for visiting my website :)");
+						System.out.println("Redirecting to Main Menu");
+						obj.goBackToMainMenu(SmallStack);
+						choice=0;
+						}
+				
+					break;
+		   }
+	   }
+	}
+  }
+}
+}
+
