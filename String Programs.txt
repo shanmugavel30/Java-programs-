@@ -1,0 +1,286 @@
+
+
+1. Remove Duplicates in the String
+
+package Strings;
+import java.util.*;
+public class RemoveDuplicates {
+
+	public static void main(String[] args) {
+		String s="zvvo";
+		LinkedHashSet<Character> set = new LinkedHashSet<>();   
+        //Add each character of the string into LinkedHashSet   
+        for(int i=0;i<s.length();i++)   
+            set.add(s.charAt(i));   
+        for(Character ch : set)   
+            System.out.print(ch);   
+	}
+
+}
+
+2. Find Substring
+
+package Strings;
+import java.util.*;
+public class RemoveDuplicates {
+
+	public static void main(String[] args) {
+		String s="zvvo";
+		LinkedHashSet<Character> set = new LinkedHashSet<>();   
+        //Add each character of the string into LinkedHashSet   
+        for(int i=0;i<s.length();i++)   
+            set.add(s.charAt(i));   
+        for(Character ch : set)   
+            System.out.print(ch);   
+	}
+
+}
+
+3. IsDigit or Not
+
+package Strings;
+import java.util.*;
+public class IsDigit {
+	public static boolean isDigit(String str) {
+		int count=0;
+		for(int i=0;i<str.length();i++) {
+			if(str.charAt(i)>='0'  && str.charAt(i)<='9' ) {
+				count++;
+			}
+		}
+		if(count==str.length()) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		String str=sc.nextLine();
+		boolean flag=isDigit(str);
+		System.out.println(flag);
+	}
+
+}
+
+4.Longest Prefix
+
+package Strings;
+import java.util.*;
+public class LongestPrefix {
+	public static boolean allCharactersSame(String s)
+	{
+	    int n = s.length();
+	    for (int i = 1; i < n; i++)
+	        if (s.charAt(i) != s.charAt(0))
+	            return false;
+	         
+	    return true;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[] arr= {"geeksforgeeks", "geeks", "geek",
+		        "geezer"};
+		Arrays.sort(arr);
+		System.out.println(Arrays.toString(arr));
+		
+		String[] str=new String[arr[0].length()];
+		int k=0;
+		int z=0;
+		String s;
+		for(int i=0;i<arr[0].length();i++) {
+			s="";
+			for(int j=0;j<arr.length;j++) {
+				s+=arr[j].charAt(i);
+				
+			}
+			str[k++]=s;
+		}
+		for(String x:str) {
+			
+			if(allCharactersSame(x)) {
+				z++;
+				continue;
+			}
+			else
+				break;
+		}
+		String emp="";
+		for(int i=0;i<z;i++) {
+			emp+=arr[0].charAt(i);
+		}
+		System.out.println(emp);		
+	}
+}
+
+5.LongestSubstring
+
+package Strings;
+
+public class LongestSubstring {
+	public static Boolean areDistinct(String str, int i, int j)
+	{
+           boolean[] visited = new boolean[26];
+
+           for(int k = i; k <= j; k++)
+           {
+               if (visited[str.charAt(k) - 'a'] == true)
+                     return false;
+
+               visited[str.charAt(k) - 'a'] = true;
+            }
+            return true;
+     }
+	public static int longestUniqueSubsttr(String str)
+	{
+	    int n = str.length();
+	     
+	    // Result
+	    int res = 0;
+	     
+	    for(int i = 0; i < n; i++)
+	        for(int j = i; j < n; j++)
+	            if (areDistinct(str, i, j))
+	                res = Math.max(res, j - i + 1);
+	                 
+	    return res;
+	}
+
+	public static void main(String[] args)
+	{
+	    String str = "geeksforgeeks";
+	    System.out.println("The input string is " + str);
+	 
+	    int len = longestUniqueSubsttr(str);
+	     
+	    System.out.println("The length of the longest " +
+	                       "non-repeating character " +
+	                       "substring is " + len);
+	}
+}
+
+
+6) Permutations of String
+
+package Strings;
+
+public class PermutationsOfString {  
+	    //Function for swapping the characters at position I with character at position j  
+	    public static String swapString(String a, int i, int j) {  
+	        char[] b =a.toCharArray();  
+	        char ch;  
+	        ch = b[i];  
+	        b[i] = b[j];  
+	        b[j] = ch;  
+	        return String.valueOf(b);  
+	    }  
+	      
+	    public static void main(String[] args)  
+	    {  
+	        String str = "ABCd";  
+	        int len = str.length();  
+	        System.out.println("All the permutations of the string are: ");  
+	        generatePermutation(str, 0, len);  
+	    }  
+	      
+	    //Function for generating different permutations of the string  
+	    public static void generatePermutation(String str, int start, int end)  
+	    {  
+	        //Prints the permutations  
+	        if (start == end-1)  
+	            System.out.println(str);  
+	        else  
+	        {  
+	            for (int i = start; i < end; i++)  
+	            {  
+	                //Swapping the string by fixing a character  
+	                str = swapString(str,start,i);  
+	                //Recursively calling function generatePermutation() for rest of the characters   
+	                generatePermutation(str,start+1,end);  
+	                //Backtracking and swapping the characters again.  
+	                str = swapString(str,start,i);  
+	            }  
+	        }  
+	    }  
+	}  
+
+
+7)Reverse String
+
+package Strings;
+public class RevString {
+	static String reverseWords(String S)
+    {
+        String rev="",sub;
+        int j=0,k=0;
+        for(int i=S.length()-1;i>=0;i--){
+        	
+            if(S.charAt(i)=='.'){
+            	k++;
+            	if(k==1) {
+                   sub=S.substring(i+1,S.length());
+                   rev+=sub;
+                   j=i;
+                 }
+            	else{
+                    sub=S.substring(i,j);
+                    rev+=sub;
+                    j=i;
+              }
+            }
+            if(i==0) {
+            	if(k==0) {
+            		return S;
+            	}
+            	else {
+        		   sub='.'+S.substring(i,j);
+                   rev+=sub;
+            	}
+        	}
+            
+        }
+        return rev;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String S="i.like.this.program.very.much";
+		String Output=reverseWords(S);
+		System.out.println(Output);
+//		
+//	    
+	}
+
+}
+
+8)RomanToInt
+
+
+package Strings;
+
+public class RomanToInt {
+	public int romanToDecimal(String str) {
+        char arr[] ={'I','V','X','L','C','D','M'};
+        int[] arr1={1,5,10,50,100,500,1000};
+        int i,Decimal=0;
+        // code here
+            for(int j=0;j<str.length();j++){
+                for( i=arr.length-1;i>=0;i--){
+                    if(str.charAt(j)==arr[i]){
+                        Decimal+=arr1[i];
+                    }
+            }
+        }
+        return Decimal;
+    }
+	public static void  main(String[] args) {
+		RomanToInt obj= new RomanToInt();
+		String str="";
+		int result=obj.romanToDecimal(str);
+		System.out.println(result);
+	}
+}
