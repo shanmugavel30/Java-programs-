@@ -1,0 +1,113 @@
+
+// Buble sort
+
+package Sortings;
+
+public class BubbleSort {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+         int[] a={8,3,38,2,9};
+          
+         System.out.println("Bubble sort...");
+         for(int i=1;i<a.length;i++) {
+        	 for(int j=0;j<a.length-i;j++) {
+        		 if(a[j+1]<a[j]) {
+        			 int temp=a[j];
+        			 a[j]=a[j+1];
+        			 a[j+1]=temp;
+        		 }
+        	 }
+         }
+         for(int v:a) {
+        	 System.out.println(v);
+         }
+	}
+}
+
+//Merge Sort
+
+package Sortings;
+
+public class MergeSort {
+	void merge(int[] arr, int l,int m,int r) {
+		 int le=m-l+1;
+		 int re=r-m;
+		
+		 int[] larr=new int[le];
+		 int[] rarr=new int[re];
+		 
+		 for(int i=0;i<le;i++) {
+			 larr[i]=arr[l+i];
+		 }
+		 for(int j=0;j<re;j++) {
+			 rarr[j]=arr[m+1+j];
+		 }
+		 
+		 int i=0,j=0;
+		 int k=l;
+		 while(i<le &&  j<re) {
+			 if(larr[i] <= rarr[j]) {
+				 arr[k]=larr[i];
+				 i++;
+			 }
+			 else {
+				 arr[k]=larr[j];
+				 j++;
+			 }
+			 k++;
+		 }
+		 while(j<re) {
+			 arr[k]=rarr[j];
+			 j++;
+			 k++;
+		 }	
+	}
+    void sort(int[] arr , int L,int R) {
+    	if(L<R) {
+    		int mid=(L+R)/2;
+    		sort(arr,L, mid);
+    		sort(arr,mid + 1,R);
+    		merge(arr,L,mid,R);
+    	}
+    	
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[]= {23,4,46,34,5,80,14};
+		
+		MergeSort obj= new MergeSort();
+		obj.sort(arr , 0 , arr.length-1);
+	
+	for(int i:arr) {
+		System.out.println(i);
+	}
+	}
+}
+
+
+//Selection Sort
+
+package Sortings;
+
+public class Selection {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+         int[] a={8,3,38,2,9};
+          
+         System.out.println("Selection sort...");
+         for(int i=0;i<a.length-1;i++) {
+        	 for(int j=i+1;j<a.length;j++) {
+        		 if(a[j]<a[i]) {
+        			 int temp=a[j];
+        			 a[j]=a[i];
+        			 a[i]=temp;
+        		 }
+        	 }
+         }
+         for(int v:a) {
+        	 System.out.println(v);
+         }
+	}
+
+}
