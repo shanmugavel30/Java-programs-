@@ -1,0 +1,475 @@
+
+
+1)Alternate Swap
+
+package Arrays;
+import java.util.*;
+public class AlternateSwap {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[] = {1,2,3,4,5,6};
+		Arrays.sort(arr);
+        int a=arr.length-1,b=0;
+        System.out.println("Program  for in the array 1st element is max ,2nd  element is Min,3rd element2nd max like that...");
+        while(a>b) {
+        	System.out.print(arr[a--]+" ");
+        	System.out.print(arr[b++]+" ");
+        }
+        if(arr.length%2!=0) {
+        	System.out.print(arr[a]);
+        }
+        
+
+  }
+}
+
+2)Compare power
+
+package Arrays;
+
+public class ComparePower {
+	public static  void main(String[] args) {
+		int X[]= {2 ,3 ,4 ,5};
+		int Y[]= {1 ,2 ,3};
+		
+       
+        long count=0;
+        for(int i : X){
+          for(int j:Y){
+              if(Math.pow(i,j)>Math.pow(j,i)){
+                  count++;
+              }
+        }  
+       }
+        System.out.println("---Program for Comparing the power--- ");
+        System.out.println(count);
+        //System.out.println(Arrays.toString(arr2));
+        
+
+}
+}
+
+3) Equilibrium-Find center point
+
+package Arrays;
+
+public class ComparePower {
+	public static  void main(String[] args) {
+		int X[]= {2 ,3 ,4 ,5};
+		int Y[]= {1 ,2 ,3};
+		
+       
+        long count=0;
+        for(int i : X){
+          for(int j:Y){
+              if(Math.pow(i,j)>Math.pow(j,i)){
+                  count++;
+              }
+        }  
+       }
+        System.out.println("---Program for Comparing the power--- ");
+        System.out.println(count);
+        //System.out.println(Arrays.toString(arr2));
+        
+
+}
+}
+
+4)Find sub Array that is equal sum
+
+package Arrays;
+import java.util.*;
+public class FindSubArray {
+
+    static ArrayList<Integer> subarraySum(int[] arr, int n, int s) 
+    {
+        ArrayList<Integer> AL = new ArrayList<Integer>();
+        // Your code here
+        for(int i=0;i<n;i++){
+            int sum=0;
+            for(int j=i;j<n;j++){
+            sum+=arr[j];
+               if(sum==s){
+                   AL.add(i+1);
+                   AL.add(j+1);
+                   return AL;
+             }
+             
+            }
+        }
+        AL.add(-1);
+        return AL;
+       
+    }
+
+    public static void main(String[] args) {
+        int n1=5;
+        int[] arr1 = {1,2,3,7,5};
+        int s1=12;
+        System.out.println("program  for need position between that elements sum is equal to sub array... ");
+        System.out.println(subarraySum(arr1 , n1, s1));
+    }
+    
+}
+
+5)Find lastIndex
+
+package Arrays;
+
+public class IndexOfLast_1 {
+	public static int lastIndex( String s) {
+        int len=s.length();
+        for(int i=len-1;i>=0;i--){
+            if((int)s.charAt(i)==49){
+                return i;
+            }
+        }
+    return -1;
+    }
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String s= "00001";
+		int result=lastIndex(s);
+		System.out.println(result);
+	}
+
+}
+
+6)Inversion count
+
+package Arrays;
+
+public class InversionCount {
+	static long inversionCount(long arr[], long N)
+    {
+        // Your Code Here
+        long count=0;
+        for(int i=0;i<arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long n=5;
+		long[] arr ={28,38,22,12,90};
+		
+        long result=inversionCount(arr,n);
+        System.out.println(result);
+	}
+
+}
+
+7)JumbArray
+
+package Arrays;
+
+public class InversionCount {
+	static long inversionCount(long arr[], long N)
+    {
+        // Your Code Here
+        long count=0;
+        for(int i=0;i<arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long n=5;
+		long[] arr ={28,38,22,12,90};
+		
+        long result=inversionCount(arr,n);
+        System.out.println(result);
+	}
+
+}
+
+8)Kadane algorithm
+
+package Arrays;
+
+public class InversionCount {
+	static long inversionCount(long arr[], long N)
+    {
+        // Your Code Here
+        long count=0;
+        for(int i=0;i<arr.length-1;i++){
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i]>arr[j]){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long n=5;
+		long[] arr ={28,38,22,12,90};
+		
+        long result=inversionCount(arr,n);
+        System.out.println(result);
+	}
+
+}
+
+9)Largest form
+
+package Arrays;
+import java.util.*;
+public class LargestForm {
+	public static void main(String[] args) {
+		int[] intArray = { 3, 30, 34, 5 ,9};
+		 
+        String[] strArray = new String[intArray.length];
+ 
+        for (int i = 0; i < intArray.length; i++) {
+            strArray[i] = String.valueOf(intArray[i]);
+        }
+        Arrays.sort(strArray);
+        System.out.println(Arrays.toString(strArray));
+        String emp="";
+        for(int i=strArray.length-1;i>=0;i--) {
+        	emp+=strArray[i];
+        }
+        System.out.println(emp);
+	}
+}
+
+10)Leaders Array
+
+package Arrays;
+
+public class LeadersArray {
+	static void leaders(int arr[], int n){
+        // Your code here
+        
+        
+        for(int i=0;i<n-1;i++){
+        	boolean flag = true;
+            for(int j=i+1;j<n;j++){
+                if(arr[i]<arr[j])
+                   flag = false;
+            }
+            if(flag){
+                System.out.print(arr[i]+" ");
+            }
+        }
+        System.out.print(arr[n-1]);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int arr[]={1,2,3,4,0};
+		leaders(arr , 5);
+	}
+
+}
+
+
+11)LeftlowerRighthigher
+package Arrays;
+import java.util.*;
+public class LeftlowerRighthigher {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int N=4;
+		int[] arr=new int[N];
+		
+		Scanner sc=new Scanner(System.in);
+		for(int i=0;i<N;i++) {
+		   arr[i]=sc.nextInt();
+		}
+		int result=Find(arr , N);
+		System.out.println(result);
+		sc.close();
+	}
+		public static int Find(int[] arr,int N) {
+			int j;
+			boolean flag1=true,flag2=true;
+			for( j=1;j<N;j++) {
+			       for(int k=0;k<j;k++) {
+			    	   if(arr[k]<arr[j]) {
+			    		    flag1=false;
+			    	   }
+			    	   else {
+			    		   break;
+			    	   }
+			       }
+			       for(int c=j+1;c<N;c++) {
+			    	   if(arr[c]>arr[j]) {
+			    		    flag2=false;
+			    	   }
+			    	   else {
+			    		   break;
+			    	   }
+			       }
+			       if(!flag1 && !flag2) {
+			    	   return arr[j];
+			       }
+			       
+				}
+			return -1;		
+		
+	}
+
+}
+
+12)Merge Two  array
+package Arrays;
+
+public class MaergeTwoArray {
+	    public static void merge(int arr1[], int arr2[], int n, int m) 
+	    {
+	        // code here 
+	        int j=0;
+	        int[] arr=new int[n+m];
+	        if(arr1[n-1]<arr2[0]){
+	            for(int i=0;i<n;i++){
+	                arr[j++]=arr1[i];
+	            }
+	            for(int i=0;i<m;i++){
+	                arr[j++]=arr2[i];
+	            }
+	        }
+	        System.out.println("Merge two sorted array");
+	        for(int a=0;a<n+m;a++) {
+	           System.out.print(arr[a]+" ");	  
+	        }
+}
+
+
+    public static void main(String[]  args) {
+    	int[] array1 = {2,4,6,9};
+    	int[] array2 = {10,29,30};
+    	int n=4,m=3;
+    	merge(array1,array2,n,m);
+    }
+}
+
+12)Missing  NUmber
+
+package Arrays;
+
+public class MissingNumber {
+	static int MissingNumber1(int array[], int n) {
+        // Your Code Here
+        int i=1,mis=0;
+        while(i<=n){
+            if(i!=array[i-1]){
+                mis=i;
+                return mis;
+            }
+            i++;
+        }
+        return mis;
+    }
+	public static void main(String[] args) {
+		int[] arr={2,3,4,5};
+		int n=4,result;
+		result = MissingNumber1(arr,n);
+		System.out.println("Missing element in Array.");
+		System.out.println(result);
+	}
+}
+
+13)Subarray
+
+package Arrays;
+
+public class SubArray {
+
+	public static void main(String[] args) {
+		int[] arr = {4,5,0,-2,-3,1};
+		int result=printSubArrays(arr, 0, 0);
+		System.out.println(result);
+	}
+
+			static int printSubArrays(int[] arr, int start, int end)
+			{
+				int count=0;
+				if (end == arr.length)
+					return count;
+				
+				else if (start > end)
+					printSubArrays(arr, 0, end + 1);
+				
+				else {
+					int sum=0;
+					for (int i = start; i < end; i++)
+						sum+=arr[i]; 
+					sum+=arr[end] ;
+//					System.out.println(sum);
+					if(sum%5==0) {
+						
+						count++;
+						
+					}
+					
+					printSubArrays(arr, start + 1,end);
+					
+				}
+				return count;
+			}	
+		}			
+
+14)Triplet
+package Arrays;
+import java.util.Scanner;
+public class Triplet {
+	static boolean checkTriplet(int[] arr, int n) {
+        // code here
+        int a,b;
+        for(int i=0;i<n;i++){
+             a=arr[i]*arr[i];
+            for(int j=i;j<n;j++){
+                if(i!=j){
+                 b=arr[j]*arr[j];
+                }else{
+                    continue;
+                }
+                for(int k=0;k<n;k++){
+                    int c=arr[k]*arr[k];
+                    
+                    
+                    if(a+b == c){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] arr=new int[n];
+		for(int i=0;i<n;i++) {
+			arr[i]=sc.nextInt();
+		}
+		
+		System.out.println(checkTriplet(arr,n));
+		sc.close();
+	}
+
+}
+
+
+	
+
+
+
+
+
+
