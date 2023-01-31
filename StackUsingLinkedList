@@ -1,0 +1,48 @@
+package LinkedList;
+
+public class StackUsingLL<T> {
+	class Node{
+		T data;
+		Node next;
+		Node(T val){
+			this.data=val;
+			this.next=null;
+		}
+	}
+	Node top;
+	StackUsingLL(){
+		top=null;
+	}
+	public void push(T val) {
+		Node newNode=new Node(val);
+		newNode.next=top;
+		top=newNode;
+	}
+	public T pop() {
+		if(top==null)
+			throw new IndexOutOfBoundsException("Stack is empty");
+		
+		T temp=top.data;
+		top=top.next;
+		return temp;
+		
+	}
+	public boolean isEmpty() {
+		return top==null;
+	}
+	public T peek() {
+		return top.data;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		StackUsingLL<Integer> obj=new StackUsingLL<Integer>();
+		obj.push(3);
+		obj.push(7);
+		obj.push(9);
+		System.out.println(obj.peek());
+		System.out.println(obj.pop());
+		System.out.println(obj.peek());
+		System.out.println(obj.isEmpty());
+	}
+
+}
