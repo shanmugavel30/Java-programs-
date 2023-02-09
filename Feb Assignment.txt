@@ -1,0 +1,357 @@
+										M shanmugavel
+
+				February Assignment
+
+1.Find Two Flavours:
+
+package FebAssignment;
+import java.util.*;
+public class FindIceFlavour {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the price:");
+		int m=sc.nextInt();
+		System.out.println("enter the number of flavour:");
+		int n=sc.nextInt();
+		int[] flav=new int[n];
+		for(int i=0;i<n;i++) {
+			flav[i]=sc.nextInt();
+		}
+		int index1,index2;
+		for(int i=0;i<n-1;i++) {
+			for(int j=i+1;j<n;j++) {
+				if(m==flav[i]+flav[j]) {
+					index1=i+1;
+					index2=j+1;
+					
+					System.out.println("costs of flavours "+flav[i]+" "+flav[j]+" Indexes of flavours "+index1+" "+index2);
+					
+				}
+				
+			}
+		}
+	}
+
+}
+
+2.Sort the Strings based on numbers
+
+package FebAssignment;
+import java.util.*;
+import java.lang.*;
+public class SortStrings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number of elements in array:");
+		int n=sc.nextInt();
+		sc.nextLine();
+		String temparr[]=new String[n];
+		for(int i=0;i<n;i++) {
+			temparr[i]=sc.nextLine();
+		}
+		
+		
+		for(int i=0;i<n-1;i++) {
+			for(int j=i+1;j<n;j++) {
+				if(temparr[i].charAt(0)>temparr[j].charAt(0)) {
+					String temp=temparr[i];
+					temparr[i]=temparr[j];
+					temparr[j]=temp;
+				}
+			}
+		}
+		for(int i=0;i<n;i++) {
+			if(i<n/2) {
+				System.out.print("-");
+			}	
+			else
+			   System.out.print(temparr[i]+" ");
+			
+		}
+		
+		//System.out.println(Arrays.toString(str));
+		
+	}
+
+}
+
+3.HackerLand:
+
+package FebAssignment;
+import java.util.*;
+public class HackerLand {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		int n=sc.nextInt();
+		int d=sc.nextInt();
+		System.out.println("Enter the expenditure array:");
+		int[] exp=new int[n];
+		for(int i=0;i<n;i++) {
+			exp[i]=sc.nextInt();
+		}
+		int count=0;
+		for(int i=0;i<d;i++) {
+			sum+=exp[i];
+		}
+		int median=sum/d;
+		System.out.println(median);
+		for(int i=0;i<n;i++) {
+			if(exp[i]>d && exp[i]>(2*median) ) {
+				count++;
+			}
+		}
+		System.out.println("The client will receive the notification by "+count+" times");
+	}
+
+}
+
+4.Get password:
+
+package FebAssignment;
+import java.util.*;
+public class GetPassword {
+	private void password(int n, String str, String attempt) {
+        String result = "";
+        String[] strings = new String[n + 1];
+        strings[0] = "";
+        for (int i = 0; i < n; i++) {
+            strings[i] = "";
+        }
+        for (int i = 0, j = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                j++;
+                continue;
+            }
+            strings[j] += str.charAt(i);
+        }
+        String testString = "";
+        for (int i = 0; i < attempt.length(); i++) {
+            testString += attempt.charAt(i);
+            if (check(testString, strings)) {
+                result += testString + " ";
+                testString = "";
+                attempt = attempt.substring(i + 1);
+                i = -1;
+            }
+        }
+        if (testString.length() >= 1) {
+            System.out.println("WRONG PASSWORD");
+        } else {
+            System.out.println(result);
+        }
+    }
+
+    private boolean check(String testString, String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            if (testString.equals(strings[i])) {
+                return true;
+            }
+        }
+        return false;
+    }	
+	    public static void main(String[] args) {
+	        Scanner sc = new Scanner(System.in);
+	        System.out.println("Enter the number of test cases:");
+	        int t=sc.nextInt();
+	        while(t>0) {
+	            System.out.println("Enter the number of strings");
+	            int n = sc.nextInt();
+	            sc.nextLine();
+	            System.out.println("Enter the password of each user as a strings");
+	            String str = sc.nextLine();
+	            System.out.println("Enter the attempted password");
+	            String attempt = sc.nextLine();
+	            GetPassword obj = new GetPassword();
+	            obj.password(n, str, attempt);
+	            t--;
+	        }
+	    }
+}
+
+
+6) Rotated nxn Matrix:
+
+package FebAssignment;
+import java.util.*;
+public class RotateMatrix {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		int[][] matrix =new int[n][n];
+		for(int i=0;i<matrix.length;i++) {
+			for(int j=0;j<matrix[i].length;j++) {
+				matrix[i][j]=sc.nextInt();
+			}
+		}
+		//System.out.println(Arrays.toString(matrix));
+		for(int t=0;t<3;t++) {
+		for(int i=0;i<matrix.length;i++) {
+			for(int j=i;j<matrix[i].length;j++) {
+				int temp=matrix[i][j];
+				matrix[i][j]=matrix[j][i];
+				matrix[j][i]=temp;
+			}
+		}
+		for(int i=0;i<n;i++) {
+			int low=0;
+			int high=n-1;
+			while(low<high) {
+				int temp=matrix[i][low];
+				matrix[i][low]=matrix[i][high];
+				matrix[i][high]=temp;
+				
+				low++;
+				high--;
+			}
+		}
+		}
+			//System.out.println(Arrays.toString(rotated));
+		
+		for(int mat[]:matrix) {
+			for(int var:mat) {
+				System.out.print(var+"  ");
+			}
+			System.out.println();
+		}
+		}
+
+	}
+
+7)Subset
+
+package FebAssignment;
+import java.util.*;
+public class Subset {
+
+	 public static void main(String[] args) {
+	        System.out.println("Enter the number of inputs");
+	        Scanner sc = new Scanner(System.in);
+	        int n = sc.nextInt();
+	        System.out.println("Enter all the inputs");
+	        int[] arr = new int[n];
+	        for (int i = 0; i < n; i++) {
+	            arr[i] = sc.nextInt();
+	        }
+	        Subset subset = new Subset();
+	        subset.solve(arr);
+	    }
+	
+	    private void solve(int[] arr) {
+	        List<List<Integer>> list = new ArrayList<>();
+	        int j = 0;
+	        System.out.println(new ArrayList<>());
+	        while (j < 3) {
+	            for (int i = j, k = 0; i < arr.length; i++, k++) {
+	                list.add(new ArrayList<>());
+	                list.get(k).add(arr[i]);
+	                System.out.println(list.get(k));
+	            }
+	            j++;
+	        }
+	    }
+}
+
+
+8)Insertion Sort:
+
+package FebAssignment;
+import java.util.*;
+public class InsertionSort {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		System.out.println("Enter the array:");
+		int insertion[]=new int[n];
+		for(int i=0;i<n;i++) {
+			insertion[i]=sc.nextInt();
+		}
+        for (int j = 1; j < n; j++) {  
+            int key = insertion[j];  
+            int i = j-1;  
+            while ( (i > -1) && ( insertion [i] > key ) ) {  
+            	insertion [i+1] = insertion [i];  
+                i--;  
+            }  
+            insertion[i+1] = key;  
+        }  
+        System.out.println(Arrays.toString(insertion));
+
+	}
+
+}
+
+9)Pattern
+
+package FebAssignment;
+import java.util.*;
+public class Pattern {
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				if(i==0 || j==0 || i==n-1 || j==n-1) {
+					System.out.print(1);
+				}
+				else if(i%2==1 && j!=0 && j!=n-1 && i!=n/2) {
+					System.out.print(0);
+				}
+				else if(i==j && i==n/2 && j>2) {
+					System.out.print(0);
+				}
+				else if(j%2==1 && i!=0 && j!=n-1 && j!=n/2) {
+					System.out.print(0);
+				}
+				else {
+					System.out.print(1);
+				}
+			}
+			System.out.println();
+		}
+	}
+}
+
+10)Find Pairs:
+
+package FebAssignment;
+import java.util.*;
+public class Pattern {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc =new Scanner(System.in);
+		int n=sc.nextInt();
+		for(int i=0;i<n;i++) {
+			for(int j=0;j<n;j++) {
+				if(i==0 || j==0 || i==n-1 || j==n-1) {
+					System.out.print(1);
+				}
+				else if(i%2==1 && j!=0 && j!=n-1 && i!=n/2) {
+					System.out.print(0);
+				}
+				else if(i==j && i==n/2 && j>2) {
+					System.out.print(0);
+				}
+				else if(j%2==1 && i!=0 && j!=n-1 && j!=n/2) {
+					System.out.print(0);
+				}
+				else {
+					System.out.print(1);
+				}
+			}
+			System.out.println();
+		}
+	}
+
+}
