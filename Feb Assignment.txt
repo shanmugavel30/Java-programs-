@@ -226,39 +226,30 @@ public class RotateMatrix {
 	}
 
 7)Subset
-
 package FebAssignment;
 import java.util.*;
-public class Subset {
-
-	 public static void main(String[] args) {
-	        System.out.println("Enter the number of inputs");
-	        Scanner sc = new Scanner(System.in);
-	        int n = sc.nextInt();
-	        System.out.println("Enter all the inputs");
-	        int[] arr = new int[n];
-	        for (int i = 0; i < n; i++) {
-	            arr[i] = sc.nextInt();
-	        }
-	        Subset subset = new Subset();
-	        subset.solve(arr);
-	    }
-	
-	    private void solve(int[] arr) {
-	        List<List<Integer>> list = new ArrayList<>();
-	        int j = 0;
-	        System.out.println(new ArrayList<>());
-	        while (j < 3) {
-	            for (int i = j, k = 0; i < arr.length; i++, k++) {
-	                list.add(new ArrayList<>());
-	                list.get(k).add(arr[i]);
-	                System.out.println(list.get(k));
-	            }
-	            j++;
-	        }
-	    }
-}
-
+public class Subset {  
+    public static void main(String[] args) {  
+  
+        String str = "FUN";  
+        int len = str.length();  
+        int temp = 0;  
+        
+        String arr[] = new String[len*(len+1)/2];  
+        System.out.println(len*(len+1));
+        
+        for(int i = 0; i < len; i++) {  
+            for(int j = i; j < len; j++) {  
+                arr[temp] = str.substring(i, j+1);  
+                temp++;  
+            }  
+        }  
+        System.out.println("All subsets for given string are: ");  
+        for(int i = 0; i < arr.length; i++) {  
+            System.out.println(arr[i]);  
+        }  
+    }  
+}  
 
 8)Insertion Sort:
 
